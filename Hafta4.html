@@ -82,4 +82,98 @@
 </form>
 
 </body>
+</html
+
+
+    <!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Programcılığı Testi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Web Programcılığı Testi</h2>
+<form action="#" method="POST">
+    <label for="question1">1. HTML'nin açılış etiketi nedir?</label>
+    <input type="text" id="question1" name="question1" required>
+
+    <label for="question2">2. CSS hangi tür bir dil olarak tanımlanır?</label>
+    <select id="question2" name="question2" required>
+        <option value="programming">Programlama Dili</option>
+        <option value="markup">İşaretleme Dili</option>
+        <option value="style">Stil Dili</option>
+    </select>
+
+    <label>3. Aşağıdaki dillerden hangisi bir programlama dilidir?</label>
+    <input type="radio" id="html" name="question3" value="html">
+    <label for="html">HTML</label><br>
+    <input type="radio" id="css" name="question3" value="css">
+    <label for="css">CSS</label><br>
+    <input type="radio" id="javascript" name="question3" value="javascript">
+    <label for="javascript">JavaScript</label><br>
+
+    <label for="question4">4. Kısa bir açıklama yazın:</label>
+    <textarea id="question4" name="question4" rows="4" required></textarea>
+
+    <label for="question5">5. Aşağıdaki dillerden hangileri front-end dilleridir? (Birden fazla seçebilirsiniz)</label>
+    <input type="checkbox" id="html" name="question5" value="html">
+    <label for="html">HTML</label><br>
+    <input type="checkbox" id="css" name="question5" value="css">
+    <label for="css">CSS</label><br>
+    <input type="checkbox" id="php" name="question5" value="php">
+    <label for="php">PHP</label><br>
+
+    <label for="question6">6. Doğum tarihinizi giriniz:</label>
+    <input type="date" id="question6" name="question6" required>
+
+    <label for="question7">7. Telefon numaranızı giriniz:</label>
+    <input type="tel" id="question7" name="question7" required>
+
+    <label for="question8">8. Email adresinizi giriniz:</label>
+    <input type="email" id="question8" name="question8" required>
+
+    <label for="question9">9. Dereceli bir seçim yapın:</label>
+    <input type="range" id="question9" name="question9" min="0" max="10">
+
+    <label for="question10">10. Test hakkında yorumlarınızı yazın:</label>
+    <textarea id="question10" name="question10" rows="4"></textarea>
+
+    <button type="submit">Testi Gönder</button>
+</form>
+
+</body>
 </html>
+
