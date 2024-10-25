@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Üyelik Formu</title>
+    <title>Test/Sınav Arayüzü</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,7 +17,7 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        input, select, textarea {
+        input, select, button {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -25,38 +25,73 @@
             border-radius: 5px;
         }
         button {
-            background-color: #5cb85c;
+            background-color: #007bff;
             color: white;
             border: none;
-            padding: 10px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #4cae4c;
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
 
-<h2>Üyelik Formu</h2>
+<h2>Test/Sınav</h2>
 <form action="#" method="POST">
-    <label for="username">Kullanıcı Adı:</label>
-    <input type="text" id="username" name="username" required>
-
-    <label for="password">Şifre:</label>
-    <input type="password" id="password" name="password" required>
-
-    <label for="email">E-posta:</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="gender">Cinsiyet:</label>
-    <select id="gender" name="gender">
-        <option value="male">Erkek</option>
-        <option value="female">Kadın</option>
-        <option value="other">Diğer</option>
+    <label for="question1">1. Aşağıdakilerden hangisi bir programlama dilidir?</label>
+    <select id="question1" name="question1" required>
+        <option value="">Seçiniz</option>
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="javascript">JavaScript</option>
+        <option value="xml">XML</option>
     </select>
 
-    <label for="dob">Doğum Tarihi:</label>
-    <input type="date" id="dob" name="dob" required>
+    <label for="question2">2. Aşağıdaki hangisi bir HTML etiketidir?</label>
+    <input type="radio" id="div" name="question2" value="div" required>
+    <label for="div">div</label><br>
+    <input type="radio" id="style" name="question2" value="style" required>
+    <label for="style">style</label><br>
+    <input type="radio" id="script" name="question2" value="script" required>
+    <label for="script">script</label><br>
+    <input type="radio" id="query" name="question2" value="query" required>
+    <label for="query">query</label><br>
 
-    <label for="phone">Telefon Numarası:</label
+    <label for="question3">3. En son sürüm HTML nedir?</label>
+    <input type="text" id="question3" name="question3" required>
+
+    <label for="question4">4. Hangi durumlarda <code>console.log()</code> kullanılır?</label>
+    <textarea id="question4" name="question4" rows="4" required></textarea>
+
+    <label for="question5">5. Aşağıdaki dillerden hangisi backend geliştirme için yaygın olarak kullanılır?</label>
+    <input type="checkbox" id="php" name="question5" value="php">
+    <label for="php">PHP</label><br>
+    <input type="checkbox" id="html" name="question5" value="html">
+    <label for="html">HTML</label><br>
+    <input type="checkbox" id="css" name="question5" value="css">
+    <label for="css">CSS</label><br>
+    <input type="checkbox" id="javascript" name="question5" value="javascript">
+    <label for="javascript">JavaScript</label><br>
+
+    <h3>Matematik Soruları</h3>
+    <label for="math1">1. 5 + 3 = ?</label>
+    <input type="number" id="math1" name="math1" required>
+
+    <label for="math2">2. 10 - 4 = ?</label>
+    <input type="number" id="math2" name="math2" required>
+
+    <label for="math3">3. 6 x 2 = ?</label>
+    <input type="number" id="math3" name="math3" required>
+
+    <label for="math4">4. 12 ÷ 3 = ?</label>
+    <input type="number" id="math4" name="math4" required>
+
+    <label for="math5">5. 8 + 2 - 5 = ?</label>
+    <input type="number" id="math5" name="math5" required>
+
+    <button type="submit">Testi Gönder</button>
+</form>
+
+</body>
+</html>
