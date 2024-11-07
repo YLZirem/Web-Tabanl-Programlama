@@ -65,14 +65,15 @@
     <label for="bio">Kısa Bio:</label>
     <textarea id="bio" name="bio" rows="4"></textarea>
 
-    <label for="interests">İlgi Alanları:</label>
-    <input type="checkbox" id="coding" name="interests" value="coding">
-    <label for="coding">Kodlama</label>
-    <input type="checkbox" id="design" name="interests" value="design">
-    <label for="design">Tasarım</label>
-    <input type="checkbox" id="music" name="interests" value="music">
-    <label for="music">Müzik</label>
 
+<form>
+  <label>İlgi Alanları:</label><br>
+  <label><input type="checkbox" name="interests" value="coding"> Kodlama</label><br>
+  <label><input type="checkbox" name="interests" value="design"> Tasarım</label><br>
+  <label><input type="checkbox" name="interests" value="music"> Müzik</label><br>
+</form>
+
+    
     <label for="terms">
         <input type="checkbox" id="terms" name="terms" required>
         Şartları kabul ediyorum
@@ -156,8 +157,7 @@
     <input type="checkbox" id="php" name="question5" value="php">
     <label for="php">PHP</label><br>
 
-    <label for="question6">6. Dereceli bir seçim yapın:</label>
-    <input type="range" id="question6" name="question6" min="0" max="10">
+
 
     <button type="submit">Testi Gönder</button>
 </form>
