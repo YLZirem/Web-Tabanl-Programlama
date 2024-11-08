@@ -13,7 +13,6 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color: lightblue;
     position: relative;
     display: flex;
     align-items: center;
@@ -28,62 +27,106 @@
     position: absolute;
   }
   .eye.left {
-    left: 30px;
+    left: 25px;
     top: 30px;
   }
   .eye.right {
-    right: 30px;
+    right: 25px;
     top: 30px;
   }
-  .mouth {
-    width: 40px;
-    height: 10px;
-    background-color: black;
-    border-radius: 20px;
-    position: absolute;
-    top: 60px;
-  }
-
-  /* Yukarı Aşağı Gidip Gelen */
+  
+  /* Yukarı Aşağı Gidip Gelen (Gülen Yüz) */
   .up-down {
+    background-color: lightblue;
     animation: upDown 2s infinite alternate;
   }
+  .up-down .mouth {
+    width: 40px;
+    height: 20px;
+    border: 3px solid black;
+    border-radius: 0 0 50px 50px;
+    position: absolute;
+    top: 60px;
+    background-color: transparent;
+  }
+
   @keyframes upDown {
     from { transform: translateY(0); }
     to { transform: translateY(50px); }
   }
 
-  /* Büyüyüp Küçülen ve Rengi Değişen */
+  /* Büyüyüp Küçülen ve Rengi Değişen (Üzgün Yüz) */
   .scale-color-change {
+    background-color: lightcoral;
     animation: scaleColor 2s infinite alternate;
   }
+  .scale-color-change .mouth {
+    width: 40px;
+    height: 20px;
+    border: 3px solid black;
+    border-radius: 50px 50px 0 0;
+    position: absolute;
+    top: 70px;
+    background-color: transparent;
+  }
+
   @keyframes scaleColor {
     from { transform: scale(1); background-color: red; }
     to { transform: scale(1.5); background-color: yellow; }
   }
 
-  /* Transparanlığı Artan ve Azalan */
+  /* Transparanlığı Artan ve Azalan (Şaşkın Yüz) */
   .fading {
+    background-color: lightgreen;
     animation: fade 2s infinite alternate;
   }
+  .fading .mouth {
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 65px;
+  }
+
   @keyframes fade {
     from { opacity: 1; }
     to { opacity: 0.3; }
   }
 
-  /* Sağa Sola Giden Gelen */
+  /* Sağa Sola Giden Gelen (Düz Yüz) */
   .left-right {
+    background-color: lightpink;
     animation: leftRight 2s infinite alternate;
   }
+  .left-right .mouth {
+    width: 40px;
+    height: 5px;
+    background-color: black;
+    position: absolute;
+    top: 70px;
+  }
+
   @keyframes leftRight {
     from { transform: translateX(0); }
     to { transform: translateX(50px); }
   }
 
-  /* Dönen */
+  /* Dönen (Dudak Bükmüş Yüz) */
   .rotate {
+    background-color: lightyellow;
     animation: spin 2s infinite linear;
   }
+  .rotate .mouth {
+    width: 30px;
+    height: 10px;
+    background-color: black;
+    border-radius: 10px 10px 50px 50px;
+    position: absolute;
+    top: 70px;
+    transform: rotate(20deg);
+  }
+
   @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
