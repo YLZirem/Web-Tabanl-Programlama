@@ -1,124 +1,60 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab Görevi</title>
+<style>
+  .container {
+    display: flex;
+    gap: 20px;
+  }
   .box {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: db7090;
   }
 
-  .eye {
-    width: 15px;
-    height: 15px;
-    background-color: black;
-    border-radius: 50%;
-    position: absolute;
-  }
-  .eye.left {
-    left: 25px;
-    top: 30px;
-  }
-  .eye.right {
-    right: 25px;
-    top: 30px;
-  }
-  
-  /* Yukarı Aşağı Gidip Gelen (Gülen Yüz) */
   .up-down {
-    background-color: #ffcccb; /* Açık pembe */
     animation: upDown 2s infinite alternate;
   }
-  .up-down .mouth {
-    width: 40px;
-    height: 20px;
-    border: 3px solid black;
-    border-radius: 0 0 50px 50px;
-    position: absolute;
-    top: 60px;
-    background-color: transparent;
-  }
-
   @keyframes upDown {
     from { transform: translateY(0); }
     to { transform: translateY(50px); }
   }
 
-  /* Büyüyüp Küçülen ve Rengi Değişen (Üzgün Yüz) */
+  /* Büyüyüp Küçülen ve Rengi Değişen */
   .scale-color-change {
-    background-color: #ffb6c1; /* Orta pembe */
     animation: scaleColor 2s infinite alternate;
   }
-  .scale-color-change .mouth {
-    width: 30px;
-    height: 10px;
-    border: 2px solid black;
-    border-radius: 50px 50px 0 0;
-    position: absolute;
-    top: 65px;
-    background-color: transparent;
-  }
-
   @keyframes scaleColor {
-    from { transform: scale(1); background-color: #ffb6c1; }
-    to { transform: scale(1.5); background-color: #ff69b4; } /* Koyu pembe */
+    from { transform: scale(1); background-color: red; }
+    to { transform: scale(1.5); background-color: yellow; }
   }
 
-  /* Transparanlığı Artan ve Azalan (Şaşkın Yüz) */
+  /* Transparanlığı Artan ve Azalan */
   .fading {
-    background-color: #ff69b4; /* Koyu pembe */
     animation: fade 2s infinite alternate;
   }
-  .fading .mouth {
-    width: 10px;
-    height: 10px;
-    background-color: black;
-    border-radius: 50%;
-    position: absolute;
-    top: 65px;
-  }
-
   @keyframes fade {
     from { opacity: 1; }
     to { opacity: 0.3; }
   }
 
-  /* Sağa Sola Giden Gelen (Düz Yüz) */
+  /* Sağa Sola Giden Gelen */
   .left-right {
-    background-color: #ff1493; /* Daha koyu pembe */
     animation: leftRight 2s infinite alternate;
   }
-  .left-right .mouth {
-    width: 40px;
-    height: 5px;
-    background-color: black;
-    position: absolute;
-    top: 70px;
-  }
-
   @keyframes leftRight {
     from { transform: translateX(0); }
     to { transform: translateX(50px); }
   }
 
-  /* Dönen (Dudak Bükmüş Yüz) */
+  /* Dönen */
   .rotate {
-    background-color: #db7093; /* Gül pembe */
     animation: spin 2s infinite linear;
   }
-  .rotate .mouth {
-    width: 30px;
-    height: 10px;
-    background-color: black;
-    border-radius: 10px 10px 50px 50px;
-    position: absolute;
-    top: 70px;
-    transform: rotate(20deg);
-  }
-
   @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
@@ -128,31 +64,11 @@
 <body>
 
 <div class="container">
-  <div class="box up-down">
-    <div class="eye left"></div>
-    <div class="eye right"></div>
-    <div class="mouth"></div>
-  </div>
-  <div class="box scale-color-change">
-    <div class="eye left"></div>
-    <div class="eye right"></div>
-    <div class="mouth"></div>
-  </div>
-  <div class="box fading">
-    <div class="eye left"></div>
-    <div class="eye right"></div>
-    <div class="mouth"></div>
-  </div>
-  <div class="box left-right">
-    <div class="eye left"></div>
-    <div class="eye right"></div>
-    <div class="mouth"></div>
-  </div>
-  <div class="box rotate">
-    <div class="eye left"></div>
-    <div class="eye right"></div>
-    <div class="mouth"></div>
-  </div>
+  <div class="box up-down"></div>
+  <div class="box scale-color-change"></div>
+  <div class="box fading"></div>
+  <div class="box left-right"></div>
+  <div class="box rotate"></div>
 </div>
 
 </body>
