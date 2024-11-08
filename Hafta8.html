@@ -29,7 +29,7 @@
         /* Kart Stili */
         .card {
             background-color: #ffffff;
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -52,7 +52,7 @@
 
         /* Kart Başlığı */
         .card-title {
-            font-size: 1.3em;
+            font-size: 1.2em;
             font-weight: bold;
             color: #333;
             margin-bottom: 8px;
@@ -65,28 +65,28 @@
         }
 
         /* Medya Sorguları ile Kart Düzeni */
-        /* Xsmall: 1 kart yan yana */
+        /* XS: 1 kart yan yana */
         @media (max-width: 575px) {
             .card-container {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* Small: 2 kart yan yana */
+        /* S: 2 kart yan yana */
         @media (min-width: 576px) and (max-width: 767px) {
             .card-container {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        /* Medium: 3 kart yan yana */
+        /* M: 3 kart yan yana */
         @media (min-width: 768px) and (max-width: 991px) {
             .card-container {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
 
-        /* Large: 6 kart yan yana */
+        /* L: 6 kart yan yana */
         @media (min-width: 992px) {
             .card-container {
                 grid-template-columns: repeat(6, 1fr);
