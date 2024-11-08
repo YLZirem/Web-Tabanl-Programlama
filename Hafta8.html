@@ -22,24 +22,28 @@
         }
 
         /* Kart düzeni için medya sorguları */
-        @media (min-width: 0px) {
+        /* Xsmall: 1 kart yan yana */
+        @media (max-width: 575px) {
             .card-container {
                 grid-template-columns: 1fr;
             }
         }
 
-        @media (min-width: 576px) {
+        /* Small: 2 kart yan yana */
+        @media (min-width: 576px) and (max-width: 767px) {
             .card-container {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (min-width: 768px) {
+        /* Medium: 3 kart yan yana */
+        @media (min-width: 768px) and (max-width: 991px) {
             .card-container {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
 
+        /* Large: 6 kart yan yana */
         @media (min-width: 992px) {
             .card-container {
                 grid-template-columns: repeat(6, 1fr);
