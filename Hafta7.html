@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab Görevi</title>
+<style>
+  .container {
+    display: flex;
+    gap: 20px;
+  }
+  .box {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: lightblue;
+  }
+
+  /* Yukarı Aşağı Gidip Gelen */
+  .up-down {
+    animation: upDown 2s infinite alternate;
+  }
+  @keyframes upDown {
+    from { transform: translateY(0); }
+    to { transform: translateY(50px); }
+  }
+
+  /* Büyüyüp Küçülen ve Rengi Değişen */
+  .scale-color-change {
+    animation: scaleColor 2s infinite alternate;
+  }
+  @keyframes scaleColor {
+    from { transform: scale(1); background-color: red; }
+    to { transform: scale(1.5); background-color: yellow; }
+  }
+
+  /* Transparanlığı Artan ve Azalan */
+  .fading {
+    animation: fade 2s infinite alternate;
+  }
+  @keyframes fade {
+    from { opacity: 1; }
+    to { opacity: 0.3; }
+  }
+
+  /* Sağa Sola Giden Gelen */
+  .left-right {
+    animation: leftRight 2s infinite alternate;
+  }
+  @keyframes leftRight {
+    from { transform: translateX(0); }
+    to { transform: translateX(50px); }
+  }
+
+  /* Dönen */
+  .rotate {
+    animation: spin 2s infinite linear;
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="box up-down"></div>
+  <div class="box scale-color-change"></div>
+  <div class="box fading"></div>
+  <div class="box left-right"></div>
+  <div class="box rotate"></div>
+</div>
+
+</body>
+</html>
