@@ -3,22 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kartlar</title>
+    <title>Estetik Kartlar</title>
     <style>
-        /* Ana kart kapsayıcısı */
+        /* Genel Sayfa Stili */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Ana Kart Kapsayıcısı */
         .card-container {
             display: grid;
-            gap: 10px;
-            padding: 10px;
+            gap: 15px;
+            padding: 20px;
+            max-width: 1200px;
+            width: 100%;
         }
 
         /* Kartlar */
         .card {
-            background-color: #f4f4f4;
+            background-color: #ffffff;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        /* Kart Hover Efekti */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Kart Başlığı ve İçeriği */
+        .card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card-content {
+            font-size: 1em;
+            color: #666;
         }
 
         /* Kart düzeni için medya sorguları */
@@ -53,12 +87,12 @@
 </head>
 <body>
     <div class="card-container">
-        <div class="card">Kart 1</div>
-        <div class="card">Kart 2</div>
-        <div class="card">Kart 3</div>
-        <div class="card">Kart 4</div>
-        <div class="card">Kart 5</div>
-        <div class="card">Kart 6</div>
-    </div>
-</body>
-</html>
+        <div class="card">
+            <div class="card-title">Kart 1</div>
+            <div class="card-content">Bu, kart içeriğidir.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Kart 2</div>
+            <div class="card-content">Bu, kart içeriğidir.</div>
+        </div>
+        <div class="
