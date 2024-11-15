@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rastgele Resim Gösterme</title>
+  <style>
+    /* CSS */
+    body {
+      background-color: #3b5998; /* Sayfa arka planı */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .image-box {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      display: inline-block;
+      margin: 10px;
+    }
+
+    button {
+      display: block;
+      margin: 5px auto;
+    }
+
+    #randomImage {
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      margin-bottom: 20px;
+      border-radius: 50%; /* Üstteki daire şeklinde görsel */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="randomImage"></div>
+    <div class="images">
+      <div id="image1" class="image-box"></div>
+      <button onclick="toggleImage('image1')">Göster/Gizle</button>
+      <div id="image2" class="image-box"></div>
+      <button onclick="toggleImage('image2')">Göster/Gizle</button>
+      <div id="image3" class="image-box"></div>
+      <button onclick="toggleImage('image3')">Göster/Gizle</button>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript
+
+    // Arka planı rastgele değiştiren fonksiyon
+    function changeBackground() {
+      const colors = ["#3b5998", "#4CAF50", "#f44336", "#e91e63", "#9c27b0", "#673ab7", "#2196F3", "#ff9800", "#009688", "#607d8b"];
+      document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    // Rastgele bir resmi seçen fonksiyon
+    function loadRandomImage() {
+      const images = [
+        "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg",
+        "img6.jpg", "img7.jpg", "img8.jpg", "img9.jpg", "img10.jpg"
+      ];
+      const randomImage = images[Math.floor(Math.random() * images.length)];
+      document.getElementById("randomImage").style.backgroundImage = `url(${randomImage})`;
+    }
+
+    // Göster/Gizle butonlarının işlevini belirleyen fonksiyon
+    function toggleImage(imageId) {
+      const image = document.getElementById(imageId);
+      if (image.style.display === "none") {
+        image.style.display = "block";
+      } else {
+        image.style.display = "none";
+      }
+    }
+
+    // Sayfa yüklendiğinde çalışacak işlemler
+    window.onload = function() {
+      changeBackground();
+      loadRandomImage();
+    };
+  </script>
+</body>
+</html>
