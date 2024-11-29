@@ -14,7 +14,7 @@
         table {
             margin: 20px auto;
             border-collapse: collapse;
-            width: 50%;
+            width: 30%;
             background-color: #fff;
             border: 1px solid #ddd;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -38,19 +38,15 @@
     <table>
         <thead>
             <tr>
-                <th>Sıra</th>
                 <th>Tek Sayı</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            $sira = 1;
             for ($i = 1; $i <= 100; $i += 2) {
                 echo "<tr>
-                        <td>{$sira}</td>
                         <td>{$i}</td>
                       </tr>";
-                $sira++;
             }
             ?>
         </tbody>
