@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablo Oluşturma</title>
+</head>
+<body>
+    <h2>Tablo Boyutlarını Belirleyin</h2>
+    <form action="tablo.php" method="POST">
+        <label for="rows">Satır Sayısı:</label>
+        <input type="number" id="rows" name="rows" min="1" required><br><br>
+        <label for="cols">Sütun Sayısı:</label>
+        <input type="number" id="cols" name="cols" min="1" required><br><br>
+        <input type="submit" value="Tabloyu Oluştur">
+    </form>
+</body>
+</html>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Formdan gelen değerleri al
+    $rows = $_POST['rows'];
+    $cols = $_POST['cols'];
+
+    echo "<h2>Oluşturulan Tablo</h2>";
+    echo "<table border='1' cellspacing='0' cellpadding='5'>";
+
+    // Satırları oluştur
+    for ($i = 0; $i < $rows; $i++) {
+        echo "<tr>";
+
+        // Her satırda sütunları oluştur
+        for ($j = 0; $j < $cols; $j++) {
+            // 1-100 arasında rastgele bir sayı üret
+            $randomNumber = rand(1, 100);
+            echo "<td>$randomNumber</td>";
+        }
+
+        echo "</tr>";
+    }
+
+    echo "</table>";
+}
+?>
