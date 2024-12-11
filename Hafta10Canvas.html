@@ -45,7 +45,6 @@
 </body>
 </html>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,14 +60,11 @@
   </form>
 
   <script>
-    const questions = [
-      { question: "HTML neyin kısaltmasıdır?", options: ["HyperText Markup Language", "Home Tool Markup Language", "Hyperlinks Text Mark Language"], correct: 0 },
-      { question: "CSS'in açılımı nedir?", options: ["Cascading Style Sheets", "Creative Style System", "Computer Style Sheets"], correct: 0 },
-      // Devam eden 8 soru daha...
-    ];
-
-    function loadQuestions() {
+    async function loadQuestions() {
+      const response = await fetch('questions.json'); // JSON dosyasını yükle
+      const questions = await response.json();
       const questionsDiv = document.getElementById('questions');
+      
       questions.forEach((q, index) => {
         const questionHTML = `
           <p>${index + 1}. ${q.question}</p>
@@ -76,7 +72,12 @@
         `;
         questionsDiv.innerHTML += questionHTML;
       });
+
+      return questions;
     }
+
+    let questions = [];
+    loadQuestions().then(data => questions = data);
 
     function submitTest() {
       const form = new FormData(document.getElementById('testForm'));
@@ -90,8 +91,6 @@
 
       alert(`Test Sonucu: ${score} doğru cevap.`);
     }
-
-    loadQuestions();
   </script>
 </body>
 </html>
