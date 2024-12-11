@@ -1,0 +1,52 @@
+[
+  {
+    "question": "HTML neyin kısaltmasıdır?",
+    "options": ["HyperText Markup Language", "Home Tool Markup Language", "Hyperlinks Text Mark Language"],
+    "correct": 0
+  },
+  {
+    "question": "CSS'in açılımı nedir?",
+    "options": ["Cascading Style Sheets", "Creative Style System", "Computer Style Sheets"],
+    "correct": 0
+  },
+  {
+    "question": "JavaScript hangi ortamda çalışır?",
+    "options": ["Sunucu tarafı", "Tarayıcı", "Her ikisi"],
+    "correct": 2
+  },
+  {
+    "question": "<head> etiketi ne için kullanılır?",
+    "options": ["Başlık bilgilerini içerir", "Sayfa içeriğini içerir", "Sayfanın alt bilgisini içerir"],
+    "correct": 0
+  },
+  {
+    "question": "CSS'te ID seçiciler nasıl tanımlanır?",
+    "options": [".idname", "#idname", "idname"],
+    "correct": 1
+  },
+  {
+    "question": "JavaScript'te bir değişken nasıl tanımlanır?",
+    "options": ["let x = 5;", "variable x = 5;", "var: x = 5;"],
+    "correct": 0
+  },
+  {
+    "question": "HTML'de bir bağlantı nasıl tanımlanır?",
+    "options": ["<a href='url'>Link</a>", "<link src='url'>", "<hyperlink src='url'>Link</hyperlink>"],
+    "correct": 0
+  },
+  {
+    "question": "CSS ile bir yazı rengi nasıl değiştirilir?",
+    "options": ["text-color: red;", "font-color: red;", "color: red;"],
+    "correct": 2
+  },
+  {
+    "question": "JavaScript'te bir dizinin sonuna eleman eklemek için hangi metod kullanılır?",
+    "options": [".add()", ".push()", ".append()"],
+    "correct": 1
+  },
+  {
+    "question": "HTML'de bir tablo satırı nasıl oluşturulur?",
+    "options": ["<tr>", "<td>", "<table-row>"],
+    "correct": 0
+  }
+]
