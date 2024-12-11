@@ -55,19 +55,19 @@
 <body>
   <h1>10 Soruluk Test</h1>
   <form id="testForm">
-    <div id="questions"></div>
+    <div id="Sorular"></div>
     <button type="button" onclick="submitTest()">Testi Gönder</button>
   </form>
 
   <script>
     async function loadQuestions() {
-      const response = await fetch('questions.json'); // JSON dosyasını yükle
+      const response = await fetch('Sorular.json'); // JSON dosyasını yükle
       const questions = await response.json();
-      const questionsDiv = document.getElementById('questions');
+      const questionsDiv = document.getElementById('Sorular');
       
       questions.forEach((q, index) => {
         const questionHTML = `
-          <p>${index + 1}. ${q.question}</p>
+          <p>${index + 1}. ${q.Sorular}</p>
           ${q.options.map((opt, i) => `<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>`).join('')}
         `;
         questionsDiv.innerHTML += questionHTML;
