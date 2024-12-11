@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duyuru Penceresi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #duyuru {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #f4b400;
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    #duyuru.show {
+      display: block;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="duyuru">Bu bir duyuru penceresidir. 5 saniye içinde kapanacaktır.</div>
+
+  <script>
+    const duyuru = document.getElementById('duyuru');
+
+    setTimeout(() => {
+      duyuru.classList.add('show');
+    }, 1000); // 1 saniye sonra açılır.
+
+    setTimeout(() => {
+      duyuru.classList.remove('show');
+    }, 6000); // 5 saniye sonra kapanır.
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Sayfası</title>
+</head>
+<body>
+  <h1>10 Soruluk Test</h1>
+  <form id="testForm">
+    <div id="questions"></div>
+    <button type="button" onclick="submitTest()">Testi Gönder</button>
+  </form>
+
+  <script>
+    const questions = [
+      { question: "HTML neyin kısaltmasıdır?", options: ["HyperText Markup Language", "Home Tool Markup Language", "Hyperlinks Text Mark Language"], correct: 0 },
+      { question: "CSS'in açılımı nedir?", options: ["Cascading Style Sheets", "Creative Style System", "Computer Style Sheets"], correct: 0 },
+      // Devam eden 8 soru daha...
+    ];
+
+    function loadQuestions() {
+      const questionsDiv = document.getElementById('questions');
+      questions.forEach((q, index) => {
+        const questionHTML = `
+          <p>${index + 1}. ${q.question}</p>
+          ${q.options.map((opt, i) => `<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>`).join('')}
+        `;
+        questionsDiv.innerHTML += questionHTML;
+      });
+    }
+
+    function submitTest() {
+      const form = new FormData(document.getElementById('testForm'));
+      let score = 0;
+
+      questions.forEach((q, index) => {
+        if (parseInt(form.get(`q${index}`)) === q.correct) {
+          score++;
+        }
+      });
+
+      alert(`Test Sonucu: ${score} doğru cevap.`);
+    }
+
+    loadQuestions();
+  </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Renkli Kareler</title>
+</head>
+<body>
+  <canvas id="canvas" width="500" height="500" style="border:1px solid black;"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FFC300'];
+
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        ctx.fillStyle = color;
+        ctx.fillRect(i * 50, j * 50, 50, 50);
+      }
+    }
+  </script>
+</body>
+</html>
