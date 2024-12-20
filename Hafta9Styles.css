@@ -2,11 +2,25 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
   font-family: Arial, sans-serif;
   transition: background-color 0.5s;
+}
+
+#random-image-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#random-image-container img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 3px solid #000;
+  border-radius: 10px;
 }
 
 .image-container {
