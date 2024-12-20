@@ -10,7 +10,7 @@ function toggleImage(imageId) {
   img.style.display = img.style.display === "none" ? "block" : "none";
 }
 
-// 10 farklı resimden rastgele birini seç ve bir elementte görüntüle
+// Rastgele bir resmi seç ve ekrana yerleştir
 function displayRandomImage() {
   const images = [
     "1.jpg",
@@ -28,13 +28,8 @@ function displayRandomImage() {
   const randomIndex = Math.floor(Math.random() * images.length);
   const randomImage = images[randomIndex];
 
-  // Rastgele resmi bir img etiketi ile ekrana yerleştir
-  const randomImageElement = document.createElement("img");
-  randomImageElement.src = randomImage;
-  randomImageElement.alt = "Rastgele";
-  randomImageElement.classList.add("image");
-
-  document.body.appendChild(randomImageElement);
+  const randomImageContainer = document.getElementById("random-image-container");
+  randomImageContainer.innerHTML = `<img src="${randomImage}" alt="Random Image">`;
 }
 
 // Sayfa yüklendiğinde işlemleri başlat
