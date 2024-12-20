@@ -1,124 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Duyuru Penceresi</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    #duyuru {
-      display: none;
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #f4b400;
-      color: white;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-    #duyuru.show {
-      display: block;
-      opacity: 1;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Sayfası</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="duyuru">Bu bir duyuru penceresidir. 5 saniye içinde kapanacaktır.</div>
 
-  <script>
-    const duyuru = document.getElementById('duyuru');
+    <div class="announcement" id="announcement">
+        <p>Bu duyuru 5 saniye sonra kapanacak.</p>
+        <button class="announcement-close" onclick="closeAnnouncement()">Kapat</button>
+    </div>
 
-    setTimeout(() => {
-      duyuru.classList.add('show');
-    }, 1000); // 1 saniye sonra açılır.
+    <h2>10 Soruluk Test</h2>
+    <form id="quizForm">
+        <!-- Sorular buraya dinamik olarak ekleniyor -->
+    </form>
+    <button onclick="submitQuiz()">Sonuçları Göster</button>
 
-    setTimeout(() => {
-      duyuru.classList.remove('show');
-    }, 6000); // 5 saniye sonra kapanır.
-  </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Sayfası</title>
-</head>
-<body>
-  <h1>10 Soruluk Test</h1>
-  <form id="testForm">
-    <div id="Sorular"></div>
-    <button type="button" onclick="submitTest()">Testi Gönder</button>
-  </form>
-
-  <script>
-    async function loadQuestions() {
-      const response = await fetch('Sorular.json'); // JSON dosyasını yükle
-      const questions = await response.json();
-      const questionsDiv = document.getElementById('Sorular');
-      
-      questions.forEach((q, index) => {
-        const questionHTML = `
-          <p>${index + 1}. ${q.Sorular}</p>
-          ${q.options.map((opt, i) => `<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>`).join('')}
-        `;
-        questionsDiv.innerHTML += questionHTML;
-      });
-
-      return questions;
-    }
-
-    let questions = [];
-    loadQuestions().then(data => questions = data);
-
-    function submitTest() {
-      const form = new FormData(document.getElementById('testForm'));
-      let score = 0;
-
-      questions.forEach((q, index) => {
-        if (parseInt(form.get(`q${index}`)) === q.correct) {
-          score++;
-        }
-      });
-
-      alert(`Test Sonucu: ${score} doğru cevap.`);
-    }
-  </script>
-</body>
-</html>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canvas Renkli Kareler</title>
-</head>
-<body>
-  <canvas id="canvas" width="500" height="500" style="border:1px solid black;"></canvas>
-
-  <script>
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FFC300'];
-
-    for (let i = 0; i < 10; i++) {
-      for (let j = 0; j < 10; j++) {
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        ctx.fillStyle = color;
-        ctx.fillRect(i * 50, j * 50, 50, 50);
-      }
-    }
-  </script>
+    <script src="Hafta10Script.js"></script>
 </body>
 </html>
