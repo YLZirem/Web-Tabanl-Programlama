@@ -1,0 +1,29 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 50px);
+  grid-gap: 10px;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border: 3px solid;
+  border-radius: 50%;
+  animation: colorShift 3s infinite;
+}
+
+@keyframes colorShift {
+  0% { border-color: #00f; }
+  50% { border-color: #0f0; }
+  100% { border-color: #00f; }
+}
