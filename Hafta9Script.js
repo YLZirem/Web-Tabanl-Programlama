@@ -10,8 +10,8 @@ function toggleImage(imageId) {
   img.style.display = img.style.display === "none" ? "block" : "none";
 }
 
-// Rastgele bir resmi seç ve ekrana yerleştir
-function displayRandomImage() {
+// 10 farklı resimden rastgele 3 tanesini seçip üstte göster
+function displayRandomImages() {
   const images = [
     "1.jpg",
     "2.jpg",
@@ -25,15 +25,29 @@ function displayRandomImage() {
     "0.jpg"
   ];
 
-  const randomIndex = Math.floor(Math.random() * images.length);
-  const randomImage = images[randomIndex];
+  // Rastgele 3 farklı resim seç
+  const randomImages = [];
+  while (randomImages.length < 3) {
+    const randomIndex = Math.floor(Math.random() * images.length);
+    const randomImage = images[randomIndex];
+    if (!randomImages.includes(randomImage)) {
+      randomImages.push(randomImage);
+    }
+  }
 
-  const randomImageContainer = document.getElementById("random-image-container");
-  randomImageContainer.innerHTML = `<img src="${randomImage}" alt="Random Image">`;
+  // Rastgele resimleri ekrana yerleştir
+  const randomImagesContainer = document.getElementById("random-images-container");
+  randomImagesContainer.innerHTML = ""; // Önceki resimleri temizle
+  randomImages.forEach(image => {
+    const imgElement = document.createElement("img");
+    imgElement.src = image;
+    imgElement.alt = "Random Image";
+    randomImagesContainer.appendChild(imgElement);
+  });
 }
 
 // Sayfa yüklendiğinde işlemleri başlat
 window.onload = () => {
   setRandomBackground();
-  displayRandomImage();
+  displayRandomImages();
 };
