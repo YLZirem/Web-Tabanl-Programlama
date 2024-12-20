@@ -9,7 +9,7 @@
 
 <h2>Hangi programlama dilini tercih ediyorsunuz?</h2>
 
-<form method="POST" action="anket.php">
+<form method="POST" action="Anket1.php">
     <label>
         <input type="radio" name="language" value="PHP"> PHP
     </label><br>
