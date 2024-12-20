@@ -10,17 +10,18 @@ body {
   transition: background-color 0.5s;
 }
 
-#random-image-container {
+#random-images-container {
   margin-bottom: 20px;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
 }
 
-#random-image-container img {
-  width: 200px;
-  height: 200px;
+#random-images-container img {
+  width: 120px;
+  height: 120px;
   object-fit: cover;
-  border: 3px solid #000;
-  border-radius: 10px;
 }
 
 .image-container {
