@@ -1,22 +1,55 @@
-// Duyuru penceresinin otomatik kapanması
-setTimeout(function() {
-    document.getElementById('announcement').style.opacity = 0;
-    document.getElementById('announcement').style.visibility = 'hidden';
-}, 5000);
-
-function closeAnnouncement() {
-    document.getElementById('announcement').style.opacity = 0;
-    document.getElementById('announcement').style.visibility = 'hidden';
-}
-
-// Soruları JavaScript ile ekliyoruz
+// JSON verisini yükle (örnek olarak JSON içeriği burada direkt kullanıldı)
 const questions = [
     {
-        question: "JavaScript hangi tip dilidir?",
-        options: ["A. Kompile edilen", "B. Yorumlanan", "C. Derleyici gerektirir"],
-        correct: "B. Yorumlanan"
+        "question": "JavaScript hangi tip dilidir?",
+        "options": ["A. Kompile edilen", "B. Yorumlanan", "C. Derleyici gerektirir"],
+        "correct": "B. Yorumlanan"
     },
-    // Diğer sorular burada...
+    {
+        "question": "HTML nedir?",
+        "options": ["A. Web sitesi oluşturma dili", "B. Grafik düzenleme aracı", "C. Veritabanı yönetim sistemi"],
+        "correct": "A. Web sitesi oluşturma dili"
+    },
+    {
+        "question": "CSS ne işe yarar?",
+        "options": ["A. Web sayfası içeriğini şekillendirme", "B. Veritabanı yönetimi", "C. Sunucu işlemleri"],
+        "correct": "A. Web sayfası içeriğini şekillendirme"
+    },
+    {
+        "question": "CSS hangi stil diline aittir?",
+        "options": ["A. HTML", "B. XML", "C. HTML5"],
+        "correct": "B. XML"
+    },
+    {
+        "question": "JavaScript, hangi tür programlama dilidir?",
+        "options": ["A. Makine dili", "B. Yüksek seviyeli dil", "C. Sistem dili"],
+        "correct": "B. Yüksek seviyeli dil"
+    },
+    {
+        "question": "HTML5 hangi yeni özelliği sunar?",
+        "options": ["A. Video etiketleri", "B. Düğme etiketleri", "C. Yalnızca yeni renkler"],
+        "correct": "A. Video etiketleri"
+    },
+    {
+        "question": "DOM nedir?",
+        "options": ["A. Veri depolama sistemi", "B. Web sayfası elemanlarına erişim sağlayan API", "C. Kod derleyici"],
+        "correct": "B. Web sayfası elemanlarına erişim sağlayan API"
+    },
+    {
+        "question": "Bootstrap nedir?",
+        "options": ["A. Veritabanı yazılımı", "B. Bir JavaScript kütüphanesi", "C. CSS framework'ü"],
+        "correct": "C. CSS framework'ü"
+    },
+    {
+        "question": "Hangisi JavaScript'te değişken tanımlama anahtar kelimesidir?",
+        "options": ["A. var", "B. let", "C. const"],
+        "correct": "A. var"
+    },
+    {
+        "question": "Web sayfası için arka plan resmi hangi CSS özelliği ile belirlenir?",
+        "options": ["A. color", "B. background-image", "C. image-background"],
+        "correct": "B. background-image"
+    }
 ];
 
 const quizForm = document.getElementById("quizForm");
@@ -47,7 +80,7 @@ questions.forEach((q, index) => {
     quizForm.appendChild(questionContainer);
 });
 
-// Test sonuçlarını gösteren fonksiyon
+// Test sonuçlarını hesaplayıp gösteren fonksiyon
 function submitQuiz() {
     let score = 0;
     questions.forEach((q, index) => {
