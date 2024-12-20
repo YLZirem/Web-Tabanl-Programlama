@@ -13,16 +13,16 @@ function toggleImage(imageId) {
 // 10 farklı resimden rastgele birini seç ve bir elementte görüntüle
 function displayRandomImage() {
   const images = [
-    "image1.jpg",
-    "image2.jpg",
-    "image3.jpg",
-    "image4.jpg",
-    "image5.jpg",
-    "image6.jpg",
-    "image7.jpg",
-    "image8.jpg",
-    "image9.jpg",
-    "image10.jpg"
+    "1.jpg",
+    "2.jpg",
+    "3.jpg",
+    "4.jpg",
+    "5.jpg",
+    "6.jpg",
+    "7.jpg",
+    "8.jpg",
+    "9.jpg",
+    "0.jpg"
   ];
 
   const randomIndex = Math.floor(Math.random() * images.length);
@@ -31,7 +31,7 @@ function displayRandomImage() {
   // Rastgele resmi bir img etiketi ile ekrana yerleştir
   const randomImageElement = document.createElement("img");
   randomImageElement.src = randomImage;
-  randomImageElement.alt = "Random Image";
+  randomImageElement.alt = "Rastgele";
   randomImageElement.classList.add("image");
 
   document.body.appendChild(randomImageElement);
