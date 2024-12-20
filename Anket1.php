@@ -23,7 +23,7 @@ if (isset($_POST['language'])) {
     $stmt->close();
 
     // Başarılı işlem sonrası kullanıcıyı sonuçlar sayfasına yönlendirme
-    header('Location: sonuclar.php');
+    header('Location: Anket3.php');
     exit;
 }
 
