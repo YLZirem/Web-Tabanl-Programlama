@@ -1,88 +1,66 @@
 <?php
-// Veritabanı bağlantısı
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "anket_veritabani";
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
+// Veritabanı bağlantı ayarları
+$servername = "localhost"; // Sunucu adı
+$username = "root"; // PHPMyAdmin kullanıcı adı
+$password = ""; // PHPMyAdmin şifre
+$dbname = "anket"; // Veritabanı adı
+
+// Veritabanına bağlan
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+// Bağlantıyı kontrol et
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Veritabanı bağlantısı başarısız: " . $conn->connect_error);
 }
 
-// Form gönderildiğinde oy kaydetme
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $secenek_id = $_POST['secenek'];
-    $language = $_POST['language'];  // Dil bilgisini alıyoruz
+// Oylar tablosundan verileri al
+$sql = "SELECT evet, hayir FROM oylar WHERE id = 1";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
 
-    // Oy sayısını artırma ve dil bilgisini kaydetme
-    $sql = "UPDATE anket_sonuc SET oy_sayisi = oy_sayisi + 1, language = '$language' WHERE id = $secenek_id";
-    if ($conn->query($sql) === TRUE) {
-        echo "Oyunuz kaydedildi!";
-    } else {
-        echo "Hata: " . $conn->error;
+$evet = $row['evet'];
+$hayir = $row['hayir'];
+
+// Oy kullanıldığında veritabanını güncelle
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $vote = $_POST['vote'];
+    if ($vote === 'evet') {
+        $evet++;
+        $conn->query("UPDATE oylar SET evet = $evet WHERE id = 1");
+    } elseif ($vote === 'hayir') {
+        $hayir++;
+        $conn->query("UPDATE oylar SET hayir = $hayir WHERE id = 1");
     }
 }
 
-// Anket seçeneklerini çekme
-$sql = "SELECT * FROM anket_sonuc";
-$result = $conn->query($sql);
+// Toplam oyları hesapla
+$totalVotes = $evet + $hayir;
+$evetPercentage = $totalVotes > 0 ? ($evet / $totalVotes) * 100 : 0;
+$hayirPercentage = $totalVotes > 0 ? ($hayir / $totalVotes) * 100 : 0;
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anket</title>
 </head>
 <body>
-    <h2>Anket: En sevdiğiniz renk nedir?</h2>
+    <h1>Bu soruya cevap verin: PHP dilini seviyor musunuz?</h1>
+
     <form method="POST">
-        <?php while($row = $result->fetch_assoc()) { ?>
-            <input type="radio" name="secenek" value="<?= $row['id'] ?>" id="secenek<?= $row['id'] ?>" required>
-            <label for="secenek<?= $row['id'] ?>"><?= $row['secenek'] ?></label><br>
-        <?php } ?>
-        <label for="language">Dil Seçiniz:</label>
-        <select name="language" required>
-            <option value="tr">Türkçe</option>
-            <option value="en">English</option>
-            <!-- Diğer diller buraya eklenebilir -->
-        </select><br>
-        <input type="submit" value="Oy Ver">
+        <button type="submit" name="vote" value="evet">Evet</button>
+        <button type="submit" name="vote" value="hayir">Hayır</button>
     </form>
 
-    <h3>Sonuçlar</h3>
-    <table border="1">
-        <tr>
-            <th>Seçenek</th>
-            <th>Oy Sayısı</th>
-            <th>Yüzde</th>
-            <th>Dil</th>
-            <th>Zaman</th>
-        </tr>
-        <?php
-        // Sonuçları yüzdelik olarak hesaplama
-        $totalVotesResult = $conn->query("SELECT SUM(oy_sayisi) AS toplam_oy FROM anket_sonuc");
-        $totalVotesRow = $totalVotesResult->fetch_assoc();
-        $totalVotes = $totalVotesRow['toplam_oy'];
-
-        $result->data_seek(0);  // Veritabanını baştan oku
-        while($row = $result->fetch_assoc()) {
-            $percentage = ($totalVotes > 0) ? ($row['oy_sayisi'] / $totalVotes) * 100 : 0;
-            echo "<tr>
-                    <td>{$row['secenek']}</td>
-                    <td>{$row['oy_sayisi']}</td>
-                    <td>" . number_format($percentage, 2) . "%</td>
-                    <td>{$row['language']}</td>
-                    <td>{$row['timestamp']}</td>
-                  </tr>";
-        }
-        ?>
-    </table>
+    <h2>Sonuçlar:</h2>
+    <p>Evet: %<?= number_format($evetPercentage, 2) ?> (<?= $evet ?> oy)</p>
+    <p>Hayır: %<?= number_format($hayirPercentage, 2) ?> (<?= $hayir ?> oy)</p>
 </body>
 </html>
-
-<?php
-$conn->close();
-?>
