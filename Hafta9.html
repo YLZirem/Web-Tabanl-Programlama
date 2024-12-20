@@ -1,93 +1,26 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <style>
-
-    body {
-      background-color: #3b5998;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .container {
-      text-align: center;
-    }
-
-    .image-box {
-      width: 100px;
-      height: 100px;
-      background-color: orange;
-      display: inline-block;
-      margin: 10px;
-    }
-
-    button {
-      display: block;
-      margin: 5px auto;
-    }
-
-    #randomImage {
-      width: 100px;
-      height: 100px;
-      background-size: cover;
-      margin-bottom: 20px;
-      border-radius: 50%;
-    }
-  </style>
+  <title>Random Image Selector</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <div id="randomImage"></div>
-     <div class="images">
-    <div id="image1" class="image-box"></div>
+  <div class="image-container">
+    <div>
+      <img id="image1" class="image" src="image1.jpg" alt="Image 1">
       <button onclick="toggleImage('image1')">Göster/Gizle</button>
-      <div id="image2" class="image-box"></div>
+    </div>
+    <div>
+      <img id="image2" class="image" src="image2.jpg" alt="Image 2">
       <button onclick="toggleImage('image2')">Göster/Gizle</button>
-      <div id="image3" class="image-box"></div>
+    </div>
+    <div>
+      <img id="image3" class="image" src="image3.jpg" alt="Image 3">
       <button onclick="toggleImage('image3')">Göster/Gizle</button>
     </div>
   </div>
-
-  <script>
-    // JavaScript
-
-    // Arka planı rastgele değiştiren fonksiyon
-    function changeBackground() {
-      const colors = ["#3b5998", "#4CAF50", "#f44336", "#e91e63", "#9c27b0", "#673ab7", "#2196F3", "#ff9800", "#009688", "#607d8b"];
-      document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    }
-
-    // Rastgele bir resmi seçen fonksiyon
-    function loadRandomImage() {
-      const images = [
-        "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg",
-        "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg"
-      ];
-      const randomImage = images[Math.floor(Math.random() * images.length)];
-      document.getElementById("randomImage").style.backgroundImage = `url(${randomImage})`;
-    }
-
-    // Göster/Gizle butonlarının işlevini belirleyen fonksiyon
-    function toggleImage(imageId) {
-      const image = document.getElementById(imageId);
-      if (image.style.display === "none") {
-        image.style.display = "block";
-      } else {
-        image.style.display = "none";
-      }
-    }
-
-
-    window.onload = function() {
-      changeBackground();
-      loadRandomImage();
-    };
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
