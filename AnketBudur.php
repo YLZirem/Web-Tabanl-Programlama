@@ -3,10 +3,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Veritabanı bağlantı ayarları
-$servername = "localhost"; // Sunucu adı
-$username = "root"; // PHPMyAdmin kullanıcı adı
-$password = ""; // PHPMyAdmin şifre
-$dbname = "anket"; // Veritabanı adı
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "anket";
 
 // Veritabanına bağlan
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -19,16 +19,10 @@ if ($conn->connect_error) {
 // Oylar tablosundan verileri al
 $sql = "SELECT evet, hayir FROM oylar WHERE id = 1";
 $result = $conn->query($sql);
+$row = $result->fetch_assoc();
 
-if ($result && $result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $evet = $row['evet'];
-    $hayir = $row['hayir'];
-} else {
-    // Eğer id=1 satırı yoksa başlangıç değerlerini sıfırla
-    $evet = 0;
-    $hayir = 0;
-}
+$evet = $row['evet'];
+$hayir = $row['hayir'];
 
 // Oy kullanıldığında veritabanını güncelle
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -41,11 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn->query("UPDATE oylar SET hayir = $hayir WHERE id = 1");
     }
 }
-
-// Toplam oyları hesapla
-$totalVotes = $evet + $hayir;
-$evetPercentage = $totalVotes > 0 ? ($evet / $totalVotes) * 100 : 0;
-$hayirPercentage = $totalVotes > 0 ? ($hayir / $totalVotes) * 100 : 0;
 
 $conn->close();
 ?>
@@ -113,27 +102,6 @@ $conn->close();
             text-align: center;
         }
 
-        .progress-bar {
-            display: flex;
-            height: 20px;
-            margin-top: 10px;
-            background-color: #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .progress-evet {
-            background-color: #6200ea;
-            width: <?= $evetPercentage ?>%;
-            transition: width 0.3s;
-        }
-
-        .progress-hayir {
-            background-color: #ff5252;
-            width: <?= $hayirPercentage ?>%;
-            transition: width 0.3s;
-        }
-
         footer {
             text-align: center;
             padding: 10px;
@@ -157,13 +125,8 @@ $conn->close();
 
         <div class="results">
             <h2>Sonuçlar:</h2>
-            <p>Evet: %<?= number_format($evetPercentage, 2) ?> (<?= $evet ?> oy)</p>
-            <p>Hayır: %<?= number_format($hayirPercentage, 2) ?> (<?= $hayir ?> oy)</p>
-
-            <div class="progress-bar">
-                <div class="progress-evet"></div>
-                <div class="progress-hayir"></div>
-            </div>
+            <p>Evet: <?= $evet ?> oy</p>
+            <p>Hayır: <?= $hayir ?> oy</p>
         </div>
     </div>
     <footer>
